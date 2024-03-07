@@ -9,9 +9,7 @@ public class GeoLocatorDatabase([FromKeyedServices(GeoLocatorApi.LocatorName)] I
         var localLocation = await dbContext.Locations.FindAsync(ipAddress, cancellationToken);
 
         if (localLocation is not null)
-        {
             return localLocation;
-        }
 
         var ipgLocation = await geoLocator.GetAsync(ipAddress, cancellationToken);
         ipgLocation.IP = ipAddress;
