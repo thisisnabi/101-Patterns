@@ -15,9 +15,9 @@ public static class ServiceCollectionExtensions
 
     public static IServiceCollection ConfigureLocatorServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddKeyedScoped<IGeoLocator, GeoLocatorDatabase>(GeoLocatorDatabase.LocatorName);
+        services.AddKeyedScoped<IGeoLocator, LocationProxy>(LocationProxy.LocatorName);
         services.AddKeyedScoped<IGeoLocator, GeoLocatorApi>(GeoLocatorApi.LocatorName);
-        services.AddScoped<LocationFinder>();
+        services.AddScoped<LocationProxy>();
          
         return services;
     }
