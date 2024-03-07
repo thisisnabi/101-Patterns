@@ -13,9 +13,7 @@ public class GeoLocatorApi(IMapper mapper, IOptions<LocationServiceAppSettings> 
         var locatorResponse = await httpClient.GetFromJsonAsync<GeoLocationResponse>(uri, cancellationToken);
 
         if (locatorResponse is null)
-        {
             throw new UnableToConnectLocatorApiException();
-        }
 
         return mapper.Map<Location>(locatorResponse);
     }

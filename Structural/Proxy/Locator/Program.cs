@@ -1,9 +1,10 @@
 var builder = WebApplication.CreateBuilder(args);
 {
-    builder.Services.ConfigureServiceDbContext(builder.Configuration);
-    builder.Services.ConfigureLocatorServices(builder.Configuration);
-    builder.Services.ConfigureMapper();
-    builder.Services.ConfigureAppSettings(builder.Configuration);
+    builder.Services
+        .ConfigureServiceDbContext(builder.Configuration)
+        .ConfigureLocatorServices(builder.Configuration)
+        .ConfigureMapper()
+        .ConfigureAppSettings(builder.Configuration);
 }
 
 var app = builder.Build();
@@ -13,6 +14,3 @@ var app = builder.Build();
             locationFinder.GetAsync(ip, cancellationToken));
 }
 app.Run();
-
-
-

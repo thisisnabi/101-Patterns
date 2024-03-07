@@ -9,9 +9,7 @@ public class GeoLocatorProxy([FromKeyedServices(GeoLocatorApi.LocatorName)] IGeo
         var localLocation = await dbContext.Locations.FindAsync(ipAddress, cancellationToken);
 
         if (localLocation is not null)
-        {
             return localLocation;
-        }
 
         var ipgLocation = await geoLocator.GetAsync(ipAddress, cancellationToken);
         ipgLocation.IP = ipAddress;
