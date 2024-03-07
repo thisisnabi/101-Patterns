@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Structural", "Structural", "{AA67010B-6FBA-4998-BE16-BAA77A40D9B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Proxy", "Proxy", "{2697A559-2EAD-4B62-90EC-2C7BD2D61159}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thisisnabi.DesignPattern.Structural.Downloader", "Structural\Proxy\Downloader\Thisisnabi.DesignPattern.Structural.Downloader.csproj", "{A32926AB-3F9F-4EFF-9619-BF092BAD9999}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thisisnabi.DesignPattern.Structural.Locator", "Structural\Proxy\Locator\Thisisnabi.DesignPattern.Structural.Locator.csproj", "{E97A24C4-B13C-480C-926C-84C3D8E84CD3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A32926AB-3F9F-4EFF-9619-BF092BAD9999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A32926AB-3F9F-4EFF-9619-BF092BAD9999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A32926AB-3F9F-4EFF-9619-BF092BAD9999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A32926AB-3F9F-4EFF-9619-BF092BAD9999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E97A24C4-B13C-480C-926C-84C3D8E84CD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E97A24C4-B13C-480C-926C-84C3D8E84CD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E97A24C4-B13C-480C-926C-84C3D8E84CD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E97A24C4-B13C-480C-926C-84C3D8E84CD3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2697A559-2EAD-4B62-90EC-2C7BD2D61159} = {AA67010B-6FBA-4998-BE16-BAA77A40D9B7}
+		{A32926AB-3F9F-4EFF-9619-BF092BAD9999} = {2697A559-2EAD-4B62-90EC-2C7BD2D61159}
+		{E97A24C4-B13C-480C-926C-84C3D8E84CD3} = {2697A559-2EAD-4B62-90EC-2C7BD2D61159}
+	EndGlobalSection
+EndGlobal
