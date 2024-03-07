@@ -1,6 +1,6 @@
 ﻿namespace Thisisnabi.DesignPattern.Structural.Locator.Features.LocationService;
 
-public class GeoLocatorDatabase([FromKeyedServices(GeoLocatorApi.LocatorName)] IGeoLocator geoLocator, LocatorDbContext dbContext) : IGeoLocator
+public class GeoLocatorProxy([FromKeyedServices(GeoLocatorApi.LocatorName)] IGeoLocator geoLocator, LocatorDbContext dbContext) : IGeoLocator
 {
     public const string LocatorName = "GeoLocatorDatabase";
 
