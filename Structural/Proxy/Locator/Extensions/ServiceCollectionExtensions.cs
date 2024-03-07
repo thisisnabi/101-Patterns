@@ -17,7 +17,6 @@ public static class ServiceCollectionExtensions
     {
         services.AddKeyedScoped<IGeoLocator, LocationProxy>(LocationProxy.LocatorName);
         services.AddKeyedScoped<IGeoLocator, GeoLocatorApi>(GeoLocatorApi.LocatorName);
-        services.AddScoped<LocationProxy>();
          
         return services;
     }
