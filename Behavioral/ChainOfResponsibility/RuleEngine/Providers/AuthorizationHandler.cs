@@ -10,5 +10,6 @@ namespace Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.P
             Console.WriteLine("Authorization handler processing request");
             // Perform authorization logic
         }
+
     }
 }

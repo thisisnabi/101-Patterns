@@ -12,7 +12,7 @@ namespace Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.A
             _nextHandler = handler;
         }
 
-        public virtual void HandleRequest(Request request)
+        public void HandleRequest(Request request)
         {
             ProcessRequest(request);
 
