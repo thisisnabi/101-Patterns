@@ -1,4 +1,4 @@
-﻿namespace Thisisnabi.DesignPattern.Structural.Locator.Extensions;
+﻿namespace Thisisnabi.DesignPattern.Structural.Proxy.Locator.Extensions;
 
 public static class ServiceCollectionExtensions
 {

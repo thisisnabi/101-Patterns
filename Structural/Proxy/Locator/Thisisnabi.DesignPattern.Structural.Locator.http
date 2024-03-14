@@ -1,6 +1,0 @@
-@Thisisnabi.DesignPattern.Structural.Locator_HostAddress = http://localhost:5002
-
-GET {{Thisisnabi.DesignPattern.Structural.Locator_HostAddress}}/locations/101.188.63.134
-Accept: application/json
-
-###

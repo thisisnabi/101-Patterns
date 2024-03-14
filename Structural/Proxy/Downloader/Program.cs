@@ -1,6 +1,6 @@
 ﻿
 
-using Thisisnabi.DesignPattern.Structural.Downloader;
+using Thisisnabi.DesignPattern.Structural.Proxy.Downloader;
 
 RealVideoServer realServer = new RealVideoServer();
 ProxyVideoServer proxyServer = new ProxyVideoServer(realServer);

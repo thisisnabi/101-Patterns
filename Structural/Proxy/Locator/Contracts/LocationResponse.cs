@@ -1,4 +1,4 @@
-﻿namespace Thisisnabi.DesignPattern.Structural.Locator.Contracts;
+﻿namespace Thisisnabi.DesignPattern.Structural.Proxy.Locator.Contracts;
 
 public record class LocationResponse(
        double Latitude,

@@ -1,4 +1,4 @@
-﻿namespace Thisisnabi.DesignPattern.Structural.Downloader;
+﻿namespace Thisisnabi.DesignPattern.Structural.Proxy.Downloader;
 
 public class ProxyVideoServer : IVideoServer
 {

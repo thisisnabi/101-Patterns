@@ -1,4 +1,4 @@
-﻿namespace Thisisnabi.DesignPattern.Structural.Locator.Features.LocationService;
+﻿namespace Thisisnabi.DesignPattern.Structural.Proxy.Locator.Features.LocationService;
 
 public sealed class LocationServiceAppSettings
 {

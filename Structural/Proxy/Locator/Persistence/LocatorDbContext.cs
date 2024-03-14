@@ -1,4 +1,4 @@
-﻿namespace Thisisnabi.DesignPattern.Structural.Locator.Persistence;
+﻿namespace Thisisnabi.DesignPattern.Structural.Proxy.Locator.Persistence;
 
 public class LocatorDbContext : DbContext
 {

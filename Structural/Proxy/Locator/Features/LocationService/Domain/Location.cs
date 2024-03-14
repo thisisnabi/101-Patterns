@@ -1,4 +1,4 @@
-﻿namespace Thisisnabi.DesignPattern.Structural.Locator.Features.LocationServices.Domain;
+﻿namespace Thisisnabi.DesignPattern.Structural.Proxy.Locator.Features.LocationServices.Domain;
 
 public class Location
 {
