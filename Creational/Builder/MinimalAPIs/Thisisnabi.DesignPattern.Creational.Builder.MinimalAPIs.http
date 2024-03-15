@@ -1,0 +1,6 @@
+@Thisisnabi.DesignPattern.Creational.Builder.MinimalAPIs_HostAddress = http://localhost:5019
+
+GET {{Thisisnabi.DesignPattern.Creational.Builder.MinimalAPIs_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
