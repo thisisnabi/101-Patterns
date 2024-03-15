@@ -1,5 +1,8 @@
 ﻿namespace Thisisnabi.DesignPattern.Structural.Proxy.Locator.Features.LocationServices.Domain;
 
+/// <summary>
+/// Represents the data structure for a location.
+/// </summary>
 public class Location
 {
     public const string TableName = "Locations";
