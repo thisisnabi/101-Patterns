@@ -1,5 +1,9 @@
 ﻿namespace Thisisnabi.DesignPattern.Structural.Proxy.Locator.Contracts;
 
+
+/// <summary>
+/// Interface defining the contract for retrieving location data.
+/// </summary>
 public record class LocationResponse(
        double Latitude,
        double Longitude,

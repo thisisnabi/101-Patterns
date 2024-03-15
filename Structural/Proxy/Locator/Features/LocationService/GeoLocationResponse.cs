@@ -1,5 +1,8 @@
 ﻿namespace Thisisnabi.DesignPattern.Structural.Proxy.Locator.Features.LocationService;
 
+/// <summary>
+/// Represents the response structure from the external location service.
+/// </summary>
 public class GeoLocationResponse
 {
     [JsonPropertyName("latitude")]
