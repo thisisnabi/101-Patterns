@@ -23,10 +23,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thisisnabi.DesignPattern.Be
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "logging", "logging", "{13C977AC-7169-4B63-9E53-1053A5E2CBAF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "rule-engine", "rule-engine", "{07B6FE27-3DCE-4CD8-A02F-6D37BF4A8F12}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine", "Behavioral\ChainOfResponsibility\RuleEngine\Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.csproj", "{7BA3A23E-6AF3-40D5-8246-BD5C789FE5A0}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,10 +41,6 @@ Global
 		{4424D929-C39D-4D1A-B394-5257E937BA9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4424D929-C39D-4D1A-B394-5257E937BA9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4424D929-C39D-4D1A-B394-5257E937BA9C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7BA3A23E-6AF3-40D5-8246-BD5C789FE5A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7BA3A23E-6AF3-40D5-8246-BD5C789FE5A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7BA3A23E-6AF3-40D5-8246-BD5C789FE5A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7BA3A23E-6AF3-40D5-8246-BD5C789FE5A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,8 +54,6 @@ Global
 		{5B423FA2-9A02-4605-A954-3664931027B5} = {DA972AC9-B233-459F-BC26-40237129D04F}
 		{4424D929-C39D-4D1A-B394-5257E937BA9C} = {13C977AC-7169-4B63-9E53-1053A5E2CBAF}
 		{13C977AC-7169-4B63-9E53-1053A5E2CBAF} = {5B423FA2-9A02-4605-A954-3664931027B5}
-		{07B6FE27-3DCE-4CD8-A02F-6D37BF4A8F12} = {5B423FA2-9A02-4605-A954-3664931027B5}
-		{7BA3A23E-6AF3-40D5-8246-BD5C789FE5A0} = {07B6FE27-3DCE-4CD8-A02F-6D37BF4A8F12}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {98ABEC4C-900E-4FA2-B829-BEA7839B73F3}
