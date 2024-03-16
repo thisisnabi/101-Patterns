@@ -9,7 +9,7 @@ using Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.Model
 
 namespace Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.Models.Catalog;
 
-public sealed class Product:/*BaseEntity*/Chain
+public sealed class Product : Chain
 {
     #region Ctors
     public Product(string name, string category, int score = 0)
@@ -22,7 +22,7 @@ public sealed class Product:/*BaseEntity*/Chain
         => new Product(name: name, category: category);
     public Product CreateProduct(string name, string category, int score)
         => new Product(name: name, category: category, score: score);
-#endregion
+    #endregion
     #region Properties
     public string Name { get; private set; }
     public string Category { get; private set; }

@@ -5,11 +5,11 @@ using Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.Model
 
 namespace Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.Models.Users;
 
-public class User : /*BaseEntity,*/ Chain
+public class User : Chain
 {
     #region Ctors
 
-    public User(string firstName, string lastName, int age, int score=0)
+    public User(string firstName, string lastName, int age, int score = 0)
     {
         this.FirstName = firstName;
         this.LastName = lastName;
@@ -42,8 +42,4 @@ public class User : /*BaseEntity,*/ Chain
 
 
     #endregion
-    protected override void WriteLine()
-    {
-        Console.WriteLine(next.ToString());
-    }
 }

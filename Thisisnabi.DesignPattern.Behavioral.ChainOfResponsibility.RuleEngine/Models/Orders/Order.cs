@@ -11,7 +11,7 @@ using Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.Model
 
 namespace Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.Models.Orders;
 
-public sealed class Order:/*BaseEntity*/Chain
+public sealed class Order : Chain
 {
     #region Ctors
     public Order(User user, Product product, int quantity)
