@@ -1,12 +1,15 @@
-﻿using Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.Models.Common;
+﻿using System.Transactions;
+
+using Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.Contracts;
+using Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.Models.Common;
 
 namespace Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.Models.Users;
 
-public sealed class User : BaseEntity
+public class User : /*BaseEntity,*/ Chain
 {
     #region Ctors
 
-    private User(string firstName, string lastName, int age, int score=0)
+    public User(string firstName, string lastName, int age, int score=0)
     {
         this.FirstName = firstName;
         this.LastName = lastName;
@@ -36,5 +39,11 @@ public sealed class User : BaseEntity
         => this.Age = age;
     public void SetScore(int score)
         => this.Score = score;
+
+
     #endregion
+    protected override void WriteLine()
+    {
+        Console.WriteLine(next.ToString());
+    }
 }

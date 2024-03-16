@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.Contracts;
 using Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.Models.Common;
 
 namespace Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.Models.Catalog;
 
-public sealed class Product:BaseEntity
+public sealed class Product:/*BaseEntity*/Chain
 {
     #region Ctors
-    private Product(string name, string category, int score = 0)
+    public Product(string name, string category, int score = 0)
     {
         this.Name = name;
         this.Category = category;
@@ -21,7 +22,7 @@ public sealed class Product:BaseEntity
         => new Product(name: name, category: category);
     public Product CreateProduct(string name, string category, int score)
         => new Product(name: name, category: category, score: score);
-    #endregion
+#endregion
     #region Properties
     public string Name { get; private set; }
     public string Category { get; private set; }
@@ -34,5 +35,7 @@ public sealed class Product:BaseEntity
         => this.Category = category;
     public void SetScore(int score)
         => this.Score = score;
+
+
     #endregion
 }

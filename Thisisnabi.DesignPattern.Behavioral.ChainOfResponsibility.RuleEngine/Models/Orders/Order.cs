@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.Contracts;
 using Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.Models.Catalog;
 using Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.Models.Common;
 using Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.Models.Users;
 
 namespace Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.Models.Orders;
 
-public sealed class Order:BaseEntity
+public sealed class Order:/*BaseEntity*/Chain
 {
     #region Ctors
-    private Order(User user, Product product, int quantity)
+    public Order(User user, Product product, int quantity)
     {
         this.User = user;
         this.Product = product;

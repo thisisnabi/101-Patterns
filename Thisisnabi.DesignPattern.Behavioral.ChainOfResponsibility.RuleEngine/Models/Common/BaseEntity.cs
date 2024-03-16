@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.Models.Common
 {
-    public class BaseEntity
+    public abstract class BaseEntity
     {
         #region Properties
         public Guid Id { get; set; }
