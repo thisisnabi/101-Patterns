@@ -1,7 +1,4 @@
-﻿using System.Transactions;
-
-using Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.Contracts;
-using Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.Models.Common;
+﻿using Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.Contracts;
 
 namespace Thisisnabi.DesignPattern.Behavioral.ChainOfResponsibility.RuleEngine.Models.Users;
 
