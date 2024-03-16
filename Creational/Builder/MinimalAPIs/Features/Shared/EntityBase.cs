@@ -1,8 +1,8 @@
-﻿namespace Thisisnabi.DesignPattern.Creational.Builder.MinimalAPIs;
+﻿namespace Thisisnabi.DesignPattern.Creational.Builder.MinimalAPIs.Features.Shared;
 
 public abstract class EntityBase
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     public DateTime CreatedOn { get; set; }
 
