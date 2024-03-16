@@ -1,17 +1,13 @@
-﻿using FluentValidation;
-using MapsterMapper;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
 
-namespace Thisisnabi.DesignPattern.Creational.Builder.MinimalAPIs;
+namespace Thisisnabi.DesignPattern.Creational.Builder.MinimalAPIs.EndpointBuilders;
 
-internal class LookupEndpoints<TEntity>(RouteGroupBuilder groupBuilder) where TEntity : EntityBase
+internal sealed class LookupEndpoints<TEntity>(RouteGroupBuilder groupBuilder) where TEntity : EntityBase
 {
     public LookupEndpoints<TEntity> WithCreate<TRequest, TResponse>()
     {
         groupBuilder.MapPost("/", async Task<Results<Ok<TResponse>, ValidationProblem>>
-            ([FromBody] TRequest request,
+        ([FromBody] TRequest request,
             [FromServices] AppDbContext dbContext,
             [FromServices] IValidator<TRequest> validator,
             IMapper mapper,
@@ -24,6 +20,8 @@ internal class LookupEndpoints<TEntity>(RouteGroupBuilder groupBuilder) where TE
             if (validationResult.IsValid)
             {
                 var entity = mapper.Map<TEntity>(request);
+
+                entity.Id = Guid.NewGuid(); // or in domain
 
                 await dbContext.Set<TEntity>().AddAsync(entity, cancellationToken);
                 await dbContext.SaveChangesAsync(cancellationToken);
@@ -39,22 +37,24 @@ internal class LookupEndpoints<TEntity>(RouteGroupBuilder groupBuilder) where TE
 
     public LookupEndpoints<TEntity> WithUpdate<TRequest>()
     {
-        groupBuilder.MapPut("/",
+        _ = groupBuilder.MapPut("/",
             async Task<Results<Ok, ValidationProblem>>
-            (int id, [FromBody] TRequest request,
-            [FromServices] AppDbContext dbContext,
-            [FromServices] IValidator<TRequest> validator,
-            IMapper mapper,
-            CancellationToken cancellationToken) =>
+            (Guid id, [FromBody] TRequest request,
+                [FromServices] AppDbContext dbContext,
+                [FromServices] IValidator<TRequest> validator,
+                IMapper mapper,
+                CancellationToken cancellationToken) =>
             {
                 ArgumentNullException.ThrowIfNull(nameof(request));
 
                 var validationResult = validator.Validate(request);
 
                 if (validationResult.IsValid)
-                {
+                {  
                     var requestEntity = mapper.Map<TEntity>(request);
-                    var oldEntity = await dbContext.Set<TEntity>().FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+                    var oldEntity = await dbContext.Set<TEntity>()
+                        .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+                    requestEntity.Id = id;
                     dbContext.Entry(oldEntity).CurrentValues.SetValues(requestEntity);
 
                     await dbContext.SaveChangesAsync(cancellationToken);
@@ -70,37 +70,39 @@ internal class LookupEndpoints<TEntity>(RouteGroupBuilder groupBuilder) where TE
 
     public LookupEndpoints<TEntity> WithDelete()
     {
-        groupBuilder.MapDelete("/", async (int id, [FromServices] AppDbContext dbContext, CancellationToken cancellationToken) =>
-        {
-            try
+        groupBuilder.MapDelete("/",
+            async (Guid id, [FromServices] AppDbContext dbContext, CancellationToken cancellationToken) =>
             {
-                var oldEntity = await dbContext.Set<TEntity>().FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
-                dbContext.Remove(oldEntity);
-                await dbContext.SaveChangesAsync(cancellationToken);
+                try
+                {
+                    var oldEntity = await dbContext.Set<TEntity>()
+                        .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 
-                return Results.Ok();
-            }
-            catch (Exception)
-            {
-                return Results.BadRequest();
-            }
-        });
+                    oldEntity.IsDeleted = true;
+
+                    dbContext.Update(oldEntity);
+                    await dbContext.SaveChangesAsync(cancellationToken);
+
+                    return Results.Ok();
+                }
+                catch (Exception)
+                {
+                    return Results.BadRequest();
+                }
+            });
 
         return this;
     }
 
     public LookupEndpoints<TEntity> WithGetById<TResponse>()
     {
-        groupBuilder.MapGet("/{id:guid}", async ([FromRoute] int id,
+        groupBuilder.MapGet("/{id:guid}", async ([FromRoute] Guid id,
             [FromServices] AppDbContext dbContext,
             IMapper mapper,
             CancellationToken cancellationToken) =>
         {
             var response = await dbContext.Set<TEntity>().FirstOrDefaultAsync(x => x.Id == id);
-            if (response is null)
-            {
-                return Results.NotFound();
-            }
+            if (response is null) return Results.NotFound();
 
             return Results.Ok(mapper.Map<TResponse>(response));
         });
@@ -117,21 +119,20 @@ internal class LookupEndpoints<TEntity>(RouteGroupBuilder groupBuilder) where TE
             var total = await dbContext.Set<TEntity>().CountAsync(cancellationToken);
 
             var entities = await dbContext.Set<TEntity>()
-                                          .ToPage(pagedRequst.Page, pagedRequst.Size)
-                                          .ToListAsync(cancellationToken);
+                .ToPage(pagedRequst.Page, pagedRequst.Size)
+                .ToListAsync(cancellationToken);
 
             var items = mapper.Map<IList<TResponse>>(entities);
 
-            if (items.IsNullOrEmpty())
-            {
-                return Results.NoContent();
-            }
+            if (items.IsNullOrEmpty()) return Results.NoContent();
 
             return Results.Ok(items.ToPaginatedResponse(pagedRequst.Page, pagedRequst.Size, total));
         });
         return this;
     }
 
-    static ValidationProblem CreateValidationProblem(IDictionary<string, string[]> errors) =>
-              TypedResults.ValidationProblem(errors);
+    private static ValidationProblem CreateValidationProblem(IDictionary<string, string[]> errors)
+    {
+        return TypedResults.ValidationProblem(errors);
+    }
 }

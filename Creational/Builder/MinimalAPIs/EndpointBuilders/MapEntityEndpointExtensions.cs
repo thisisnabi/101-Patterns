@@ -1,10 +1,9 @@
-﻿using Thisisnabi.DesignPattern.Creational.Builder.MinimalAPIs.Features;
-
-namespace Thisisnabi.DesignPattern.Creational.Builder.MinimalAPIs;
+﻿namespace Thisisnabi.DesignPattern.Creational.Builder.MinimalAPIs.EndpointBuilders;
 
 public static class MapEntityEndpointExtensions
 {
-    internal static LookupEndpoints<TLookupType> EntityEndpoint<TLookupType>(this IEndpointRouteBuilder endpoints) where TLookupType : EntityBase
+    internal static LookupEndpoints<TLookupType> EntityEndpoint<TLookupType>(this IEndpointRouteBuilder endpoints)
+        where TLookupType : EntityBase
     {
         ArgumentNullException.ThrowIfNull(endpoints);
 
@@ -20,11 +19,11 @@ public static class MapEntityEndpointExtensions
         ArgumentNullException.ThrowIfNull(endpoints);
 
         endpoints.EntityEndpoint<UserType>()
-                     .WithCreate<CreateUserTypeRequest, CreateUserTypeResponse>()
-                     .WithUpdate<UpdateUserTypeRequst>()
-                     .WithDelete()
-                     .WithGetById<UserTypeResponse>()
-                     .WithGetAll<UserTypeResponse>();
+            .WithCreate<CreateUserTypeRequest, CreateUserTypeResponse>()
+            .WithUpdate<UpdateUserTypeRequst>()
+            .WithDelete()
+            .WithGetById<UserTypeResponse>()
+            .WithGetAll<UserTypeResponse>();
 
         return endpoints;
     }
