@@ -9,6 +9,8 @@
 
   <ItemGroup>
     <Folder Include="Abstractions\" />
+    <Folder Include="Models\Catalog\" />
+    <Folder Include="Models\Orders\" />
     <Folder Include="Providers\" />
   </ItemGroup>
 
