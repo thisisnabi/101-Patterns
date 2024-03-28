@@ -7,7 +7,8 @@ internal sealed class LookupEndpoints<TEntity>(RouteGroupBuilder groupBuilder) w
     public LookupEndpoints<TEntity> WithCreate<TRequest, TResponse>()
     {
         groupBuilder.MapPost("/", async Task<Results<Ok<TResponse>, ValidationProblem>>
-        ([FromBody] TRequest request,
+        (
+            [FromBody] TRequest request,
             [FromServices] AppDbContext dbContext,
             [FromServices] IValidator<TRequest> validator,
             IMapper mapper,
@@ -37,33 +38,34 @@ internal sealed class LookupEndpoints<TEntity>(RouteGroupBuilder groupBuilder) w
 
     public LookupEndpoints<TEntity> WithUpdate<TRequest>()
     {
-        _ = groupBuilder.MapPut("/",
-            async Task<Results<Ok, ValidationProblem>>
-            (Guid id, [FromBody] TRequest request,
-                [FromServices] AppDbContext dbContext,
-                [FromServices] IValidator<TRequest> validator,
-                IMapper mapper,
-                CancellationToken cancellationToken) =>
-            {
-                ArgumentNullException.ThrowIfNull(nameof(request));
+        groupBuilder.MapPut("/",
+           async Task<Results<Ok, ValidationProblem>>
+           (Guid id,
+           [FromBody] TRequest request,
+           [FromServices] AppDbContext dbContext,
+           [FromServices] IValidator<TRequest> validator,
+           IMapper mapper,
+           CancellationToken cancellationToken) =>
+           {
+               ArgumentNullException.ThrowIfNull(nameof(request));
 
-                var validationResult = validator.Validate(request);
+               var validationResult = validator.Validate(request);
 
-                if (validationResult.IsValid)
-                {  
-                    var requestEntity = mapper.Map<TEntity>(request);
-                    var oldEntity = await dbContext.Set<TEntity>()
-                        .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
-                    requestEntity.Id = id;
-                    dbContext.Entry(oldEntity).CurrentValues.SetValues(requestEntity);
+               if (validationResult.IsValid)
+               {
+                   var requestEntity = mapper.Map<TEntity>(request);
+                   var oldEntity = await dbContext.Set<TEntity>()
+                       .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+                   requestEntity.Id = id;
+                   dbContext.Entry(oldEntity).CurrentValues.SetValues(requestEntity);
 
-                    await dbContext.SaveChangesAsync(cancellationToken);
+                   await dbContext.SaveChangesAsync(cancellationToken);
 
-                    return TypedResults.Ok();
-                }
+                   return TypedResults.Ok();
+               }
 
-                return CreateValidationProblem(validationResult.ToDictionary());
-            });
+               return CreateValidationProblem(validationResult.ToDictionary());
+           });
 
         return this;
     }
@@ -71,7 +73,10 @@ internal sealed class LookupEndpoints<TEntity>(RouteGroupBuilder groupBuilder) w
     public LookupEndpoints<TEntity> WithDelete()
     {
         groupBuilder.MapDelete("/",
-            async (Guid id, [FromServices] AppDbContext dbContext, CancellationToken cancellationToken) =>
+            async (
+                Guid id,
+                [FromServices] AppDbContext dbContext,
+                CancellationToken cancellationToken) =>
             {
                 try
                 {
@@ -96,7 +101,8 @@ internal sealed class LookupEndpoints<TEntity>(RouteGroupBuilder groupBuilder) w
 
     public LookupEndpoints<TEntity> WithGetById<TResponse>()
     {
-        groupBuilder.MapGet("/{id:guid}", async ([FromRoute] Guid id,
+        groupBuilder.MapGet("/{id:guid}", async (
+            [FromRoute] Guid id,
             [FromServices] AppDbContext dbContext,
             IMapper mapper,
             CancellationToken cancellationToken) =>
@@ -111,7 +117,8 @@ internal sealed class LookupEndpoints<TEntity>(RouteGroupBuilder groupBuilder) w
 
     public LookupEndpoints<TEntity> WithGetAll<TResponse>()
     {
-        groupBuilder.MapGet("/", async ([AsParameters] PagedRequestQuery pagedRequst,
+        groupBuilder.MapGet("/", async (
+            [AsParameters] PagedRequestQuery pagedRequst,
             [FromServices] AppDbContext dbContext,
             IMapper mapper,
             CancellationToken cancellationToken) =>
