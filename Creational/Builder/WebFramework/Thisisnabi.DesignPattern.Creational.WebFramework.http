@@ -1,0 +1,11 @@
+@Thisisnabi.DesignPattern.Creational.WebFramework_WebApplicationListenerAddress = http://localhost:5019
+
+POST {{Thisisnabi.DesignPattern.Creational.WebFramework_WebApplicationListenerAddress}}/api/v1/users/1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "firstName":"mehrdad",
+  "lastName" : "tabesh"
+}
+###
