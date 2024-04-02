@@ -35,6 +35,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thisisnabi.DesignPattern.Cr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebFramework", "WebFramework", "{6CEB7E03-A7EA-4661-9788-A40D0573AE48}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reporter", "Reporter", "{88F4F441-3244-403E-83C8-E9F3E1EEAEE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thisisnabi.DesignPattern.Creational.Builder.Reporter", "Creational\Builder\Reporter\Thisisnabi.DesignPattern.Creational.Builder.Reporter\Thisisnabi.DesignPattern.Creational.Builder.Reporter.csproj", "{5F867A95-C0B3-4EDF-8F01-D28A6E55CF65}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +65,10 @@ Global
 		{75DF1A45-0F4C-4877-B7AC-82E305D18F46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75DF1A45-0F4C-4877-B7AC-82E305D18F46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75DF1A45-0F4C-4877-B7AC-82E305D18F46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F867A95-C0B3-4EDF-8F01-D28A6E55CF65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F867A95-C0B3-4EDF-8F01-D28A6E55CF65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F867A95-C0B3-4EDF-8F01-D28A6E55CF65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F867A95-C0B3-4EDF-8F01-D28A6E55CF65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +87,8 @@ Global
 		{DF25837E-E5FD-4CD0-8E56-301FC6FBF7EE} = {23E0BB9D-76A0-4477-9148-CBBACB473367}
 		{75DF1A45-0F4C-4877-B7AC-82E305D18F46} = {6CEB7E03-A7EA-4661-9788-A40D0573AE48}
 		{6CEB7E03-A7EA-4661-9788-A40D0573AE48} = {4D3C53A2-569A-4412-AA26-FB317A8FFEA1}
+		{88F4F441-3244-403E-83C8-E9F3E1EEAEE8} = {4D3C53A2-569A-4412-AA26-FB317A8FFEA1}
+		{5F867A95-C0B3-4EDF-8F01-D28A6E55CF65} = {88F4F441-3244-403E-83C8-E9F3E1EEAEE8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {98ABEC4C-900E-4FA2-B829-BEA7839B73F3}
