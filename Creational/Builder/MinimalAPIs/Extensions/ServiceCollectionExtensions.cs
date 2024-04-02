@@ -1,6 +1,4 @@
-﻿using FluentValidation.AspNetCore;
-
-namespace Thisisnabi.DesignPattern.Creational.Builder.MinimalAPIs.Extensions;
+﻿namespace Thisisnabi.DesignPattern.Creational.Builder.MinimalAPIs.Extensions;
 
 public static class ServiceCollectionExtensions
 {
@@ -33,7 +31,6 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection SetupFluentValidation(this IServiceCollection services)
     {
         services.AddValidatorsFromAssemblyContaining<AppDbContext>();
-        services.AddFluentValidationAutoValidation();
         return services;
     }
 }
